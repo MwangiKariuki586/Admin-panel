@@ -3,7 +3,11 @@
   align-items: center;
   justify-content: space-between;
   padding: 30px;
-
+  .signout{
+    display: flex;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
   span{
 
     &:first-child{

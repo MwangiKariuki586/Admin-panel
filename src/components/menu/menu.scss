@@ -2,6 +2,9 @@
 @import "../../styles/responsive.scss";
 
 .menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   .item {
     display: flex;
     flex-direction: column;

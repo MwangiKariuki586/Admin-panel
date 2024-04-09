@@ -1,21 +1,61 @@
 import { Link } from "react-router-dom";
 import "./Menu.scss";
-import { menu } from "../../data";
+import { HiOutlineHome } from "react-icons/hi";
+import { GoGitPullRequest } from "react-icons/go";
+import { RiStockLine } from "react-icons/ri";
+import { HiOutlinePrinter } from "react-icons/hi2";
+import { VscOrganization } from "react-icons/vsc";
+import { CiLocationArrow1 } from "react-icons/ci";
+import { TbSettings } from "react-icons/tb";
+import { PiChartScatter } from "react-icons/pi";
+import { FaUsersRays } from "react-icons/fa6";
 
 const Menu = () => {
   return (
     <div className="menu">
-      {menu.map((item) => (
-        <div className="item" key={item.id}>
-          <span className="title">{item.title}</span>
-          {item.listItems.map((listItem) => (
-            <Link to={listItem.url} className="listItem" key={listItem.id}>
-              <img src={listItem.icon} alt="" />
-              <span className="listItemTitle">{listItem.title}</span>
-            </Link>
-          ))}
-        </div>
-      ))}
+      <div className="item">
+        <span className="title">MAIN</span>
+        <Link to={"/"} className="listItem">
+          <HiOutlineHome />
+          <span className="listItemTitle">Homepage</span>
+        </Link>
+        <span className="title">MODELS</span>
+        <Link to={"/users"} className="listItem">
+          <FaUsersRays />
+          <span className="listItemTitle">Users</span>
+        </Link>
+        <Link to={"/"} className="listItem">
+          <GoGitPullRequest />
+          <span className="listItemTitle">Toner Requests</span>
+        </Link>
+        <Link to={"/products"} className="listItem">
+          <RiStockLine />
+          <span className="listItemTitle">Toners</span>
+        </Link>
+        <Link to={"/"} className="listItem">
+          <HiOutlinePrinter />
+          <span className="listItemTitle">Printers</span>
+        </Link>
+        <Link to={"/"} className="listItem">
+          <VscOrganization />
+          <span className="listItemTitle">Departments</span>
+        </Link>
+        <Link to={"/"} className="listItem">
+          <CiLocationArrow1 />
+          <span className="listItemTitle">Locations</span>
+        </Link>
+        <span className="title">MAINTENANCE</span>
+        <Link to={"/"} className="listItem">
+          <TbSettings />
+          <span className="listItemTitle">Settings</span>
+        </Link>
+      </div>
+      <div className="item">
+        <Link to={"/"} className="listItem">
+          <TbSettings />
+          <span className="listItemTitle">Logout</span>
+        </Link>
+      </div>
     </div>
   );
 };
