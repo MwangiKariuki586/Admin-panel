@@ -1,7 +1,7 @@
 @import "./variables.scss";
 @import "./responsive.scss";
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..800;1,300..800&family=Reddit+Mono:wght@200..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300..800;1,300..800&family=Reddit+Mono:wght@200..900&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +29,7 @@ a {
   padding: 5px 20px;
   border-right: 2px solid $soft-bg;
 
-  @include lg{
+  @include lg {
     width: max-content;
   }
 }
@@ -37,4 +37,10 @@ a {
 .contentContainer {
   padding: 5px 20px;
   width: 100%;
+  overflow: scroll;
+  height: 85vh;
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent; /* make scrollbar transparent */
 }

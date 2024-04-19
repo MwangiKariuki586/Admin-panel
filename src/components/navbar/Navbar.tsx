@@ -7,7 +7,7 @@ const Navbar = () => {
         <img src="logo.svg" alt="" />
         <span>Kenindia</span>
       </div>
-      <input type="search" name="" id="" className="search" />
+      <input type="search" placeholder="Search" className="search" />
       <div className="icons">
         <div className="notification">
           <img src="/notifications.svg" alt="" />

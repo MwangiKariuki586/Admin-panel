@@ -14,47 +14,47 @@ const Menu = () => {
   return (
     <div className="menu">
       <div className="item">
-        <span className="title">MAIN</span>
-        <Link to={"/"} className="listItem">
-          <HiOutlineHome />
-          <span className="listItemTitle">Homepage</span>
-        </Link>
-        <span className="title">MODELS</span>
-        <Link to={"/users"} className="listItem">
-          <FaUsersRays />
-          <span className="listItemTitle">Users</span>
-        </Link>
-        <Link to={"/"} className="listItem">
-          <GoGitPullRequest />
-          <span className="listItemTitle">Toner Requests</span>
-        </Link>
-        <Link to={"/products"} className="listItem">
-          <RiStockLine />
-          <span className="listItemTitle">Toners</span>
-        </Link>
-        <Link to={"/"} className="listItem">
-          <HiOutlinePrinter />
-          <span className="listItemTitle">Printers</span>
-        </Link>
-        <Link to={"/"} className="listItem">
-          <VscOrganization />
-          <span className="listItemTitle">Departments</span>
-        </Link>
-        <Link to={"/"} className="listItem">
-          <CiLocationArrow1 />
-          <span className="listItemTitle">Locations</span>
-        </Link>
-        <span className="title">MAINTENANCE</span>
-        <Link to={"/"} className="listItem">
-          <TbSettings />
-          <span className="listItemTitle">Settings</span>
-        </Link>
-      </div>
-      <div className="item">
-        <Link to={"/"} className="listItem">
-          <TbSettings />
-          <span className="listItemTitle">Logout</span>
-        </Link>
+        <div>
+          <span className="title">MAIN</span>
+          <Link to={"/"} className="listItem">
+            <HiOutlineHome />
+            <span className="listItemTitle">Homepage</span>
+          </Link>
+        </div>
+        <div>
+          <span className="title">MODELS</span>
+          <Link to={"/users"} className="listItem">
+            <FaUsersRays />
+            <span className="listItemTitle">Users</span>
+          </Link>
+          <Link to={"/toner_requests"} className="listItem">
+            <GoGitPullRequest />
+            <span className="listItemTitle">Toner Requests</span>
+          </Link>
+          <Link to={"/products"} className="listItem">
+            <RiStockLine />
+            <span className="listItemTitle">Toners</span>
+          </Link>
+          <Link to={"/"} className="listItem">
+            <HiOutlinePrinter />
+            <span className="listItemTitle">Printers</span>
+          </Link>
+          <Link to={"/"} className="listItem">
+            <VscOrganization />
+            <span className="listItemTitle">Departments</span>
+          </Link>
+          <Link to={"/"} className="listItem">
+            <CiLocationArrow1 />
+            <span className="listItemTitle">Locations</span>
+          </Link>
+        </div>
+        <div>
+          <span className="title">MAINTENANCE</span>
+          <Link to={"/"} className="listItem">
+            <TbSettings />
+            <span className="listItemTitle">Settings</span>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import Home from "./pages/home/Home";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Users from "./pages/users/Users";
-import Products from "./pages/products/Products";
+import Toner_requests from "./pages/Toner requests/Toner_requests";
 import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Menu from "./components/menu/Menu";
@@ -9,12 +9,8 @@ import Login from "./pages/login/Login";
 import "./styles/global.scss";
 import User from "./pages/user/User";
 import Product from "./pages/product/Product";
-import NotFound from "./components/not found/NotFound.jsx";
-import {
-  QueryClient,
-  QueryClientProvider,
-} from "@tanstack/react-query";
-
+import NotFound from "./components/not found/NotFound";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 const queryClient = new QueryClient();
 
@@ -52,8 +48,8 @@ function App() {
           element: <Users />,
         },
         {
-          path: "/products",
-          element: <Products />,
+          path: "/toner_requests",
+          element: <Toner_requests />,
         },
         {
           path: "/users/:id",
