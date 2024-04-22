@@ -13,7 +13,12 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
+button {
+  background-color: #e52384;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+}
 .main {
   font-family: "Inter", sans-serif;
   background-color: $main-bg;

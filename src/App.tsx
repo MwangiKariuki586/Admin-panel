@@ -8,6 +8,10 @@ import Menu from "./components/menu/Menu";
 import Login from "./pages/login/Login";
 import "./styles/global.scss";
 import User from "./pages/user/User";
+import Toners from "./pages/toners/Toners";
+import Printers from "./pages/printers/Printers";
+import Locations from "./pages/locations/Locations";
+import Departments from "./pages/departments/Departments";
 import Product from "./pages/product/Product";
 import NotFound from "./components/not found/NotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -48,8 +52,25 @@ function App() {
           element: <Users />,
         },
         {
+          path: "/toners",
+          element: <Toners />,
+        },
+
+        {
+          path: "/printers",
+          element: <Printers />,
+        },
+        {
           path: "/toner_requests",
           element: <Toner_requests />,
+        },
+        {
+          path: "/departments",
+          element: <Departments />,
+        },
+        {
+          path: "/locations",
+          element: <Locations />,
         },
         {
           path: "/users/:id",

@@ -29,18 +29,21 @@ const columns = [
     headerName: "Location",
     width: 131,
   },
-  {
-    field: "Date_of_request",
-    headerName: "Date",
-    width: 103,
-  },
+
   { field: "toner", headerName: "Toner", width: 109 },
   { field: "printer_name", headerName: "Printer", width: 118 },
   {
     field: "issued",
     headerName: "Issued",
+    type: "Checkbox",
     width: 115,
     renderCell: (params) => (params.value ? <CheckIcon /> : <ClearIcon />),
+  },
+  {
+    field: "Date_of_request",
+    headerName: "Date",
+    type: "Date",
+    width: 103,
   },
 ];
 
@@ -69,11 +72,11 @@ const Toner_requests = () => {
     <div className="users">
       <div className="info">
         <h1>Toner requests</h1>
-        <button onClick={() => setOpen(true)}>Add New User</button>
+        {/* <button onClick={() => setOpen(true)}>Add New Request</button> */}
       </div>
       <DataTable slug="users" columns={columns} rows={userdata} />
 
-      {open && <Add slug="user" columns={columns} setOpen={setOpen} />}
+      {open && <Add slug="Request" columns={columns} setOpen={setOpen} />}
     </div>
   );
 };

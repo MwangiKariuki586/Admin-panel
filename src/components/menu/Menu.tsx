@@ -31,19 +31,19 @@ const Menu = () => {
             <GoGitPullRequest />
             <span className="listItemTitle">Toner Requests</span>
           </Link>
-          <Link to={"/products"} className="listItem">
+          <Link to={"/toners"} className="listItem">
             <RiStockLine />
             <span className="listItemTitle">Toners</span>
           </Link>
-          <Link to={"/"} className="listItem">
+          <Link to={"/printers"} className="listItem">
             <HiOutlinePrinter />
             <span className="listItemTitle">Printers</span>
           </Link>
-          <Link to={"/"} className="listItem">
+          <Link to={"/departments"} className="listItem">
             <VscOrganization />
             <span className="listItemTitle">Departments</span>
           </Link>
-          <Link to={"/"} className="listItem">
+          <Link to={"/locations"} className="listItem">
             <CiLocationArrow1 />
             <span className="listItemTitle">Locations</span>
           </Link>
