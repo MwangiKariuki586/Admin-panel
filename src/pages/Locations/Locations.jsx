@@ -18,8 +18,8 @@ const Locations = () => {
     {
       field: "Location_name",
       headerName: "Location",
-      type: "singleSelect",
-      valueOptions: locations,
+      type: "Text",
+
       width: 110,
       editable: true,
     },

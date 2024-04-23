@@ -20,8 +20,8 @@ const Departments = () => {
     {
       field: "Department_name",
       headerName: "Department",
-      type: "singleSelect",
-      valueOptions: departments,
+      type: "Text",
+
       width: 110,
       editable: true,
     },

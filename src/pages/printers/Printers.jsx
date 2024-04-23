@@ -19,8 +19,7 @@ const Printers = () => {
     {
       field: "Printer_name",
       headerName: "printer",
-      type: "singleSelect",
-      valueOptions: printers,
+      type: "Text",
       width: 110,
       editable: true,
     },

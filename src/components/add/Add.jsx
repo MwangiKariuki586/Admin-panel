@@ -5,6 +5,7 @@ import "./add.scss";
 const Add = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
+
     props.setOpen(false);
   };
 
@@ -38,11 +39,15 @@ const Add = (props) => {
                     ))}
                   </select>
                 ) : (
-                  <input type={column.type} placeholder={column.field} />
+                  <input
+                    className=""
+                    type={column.type}
+                    placeholder={column.field}
+                  />
                 )}
               </div>
             ))}
-          <button>Send</button>
+          <button type="submit">Send</button>
         </form>
       </div>
     </div>
