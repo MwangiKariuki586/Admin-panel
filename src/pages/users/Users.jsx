@@ -88,6 +88,22 @@ const Users = () => {
       editable: true,
     },
   ];
+  const handleSubmitSuccess = (data) => {
+    console.log("Form submitted successfully:", data);
+    // Handle success
+  };
+
+  const handleSubmitError = (error) => {
+    console.error("Error submitting form:", error);
+    // Handle error
+  };
+  const getFormFields = () => {
+    return columns
+      .filter((column) => column.field !== "id" && column.type !== "Date") // Exclude "id" field
+      .map((column) => ({
+        [column.field]: userdata[column.field], // Map each field to its corresponding value from userdata
+      }));
+  };
   return (
     <div className="users">
       <div className="info">
@@ -96,7 +112,18 @@ const Users = () => {
       </div>
       <DataTable slug="users" columns={columns} rows={userdata} />
 
-      {open && <Add slug="User" columns={columns} setOpen={setOpen} />}
+      {open && (
+        <Add
+          slug="User"
+          columns={columns}
+          setOpen={setOpen}
+          endpoint="http://localhost:8000/api/register/"
+          method="POST"
+          formData={getFormFields()}
+          onSuccess={handleSubmitSuccess}
+          onError={handleSubmitError}
+        />
+      )}
     </div>
   );
 };

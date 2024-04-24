@@ -1,14 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 
 import "./add.scss";
+import axios from "axios";
 
 const Add = (props) => {
+  const [formState, setFormState] = useState([]);
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios
+      .post(props.endpoint, formState)
+      .then((response) => {
+        if (onSuccess) {
+          onSuccess(response.data);
+          props.setOpen(false);
+        }
+      })
+      .catch((error) => {
+        // if (onError) {
+        //   onError(error);
 
-    props.setOpen(false);
+        // }
+        alert("error");
+      });
   };
-
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormState({ ...formState, [name]: value });
+  };
   return (
     <div className="add">
       <div className="modal">
@@ -28,9 +46,17 @@ const Add = (props) => {
               <div className="item" key={column.field}>
                 <label>{column.headerName}</label>
                 {column.type === "Checkbox" ? (
-                  <input type={column.type} style={{ marginRight: "auto" }} />
+                  <input
+                    value={formState[column.field]}
+                    onChange={handleInputChange}
+                    type={column.type}
+                    style={{ marginRight: "auto" }}
+                  />
                 ) : column.type === "singleSelect" && column.valueOptions ? (
-                  <select>
+                  <select
+                    value={formState[column.field]}
+                    onChange={handleInputChange}
+                  >
                     <option value="">Select...</option>
                     {column.valueOptions.map((option) => (
                       <option key={option} value={option}>
@@ -43,6 +69,8 @@ const Add = (props) => {
                     className=""
                     type={column.type}
                     placeholder={column.field}
+                    value={formState[column.field]}
+                    onChange={handleInputChange}
                   />
                 )}
               </div>
