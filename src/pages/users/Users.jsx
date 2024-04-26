@@ -38,13 +38,22 @@ const Users = () => {
     { field: "id", headerName: "ID", width: 90 },
     {
       field: "staff_name",
+      name: "staff_name",
       headerName: "Staff name",
       width: 150,
       editable: true,
     },
-    { field: "staffid", headerName: "Staff ID", width: 150, editable: true },
+    {
+      field: "staffid",
+      name: "staffid",
+      headerName: "Staff ID",
+      type: "Number",
+      width: 150,
+      editable: true,
+    },
     {
       field: "department_name",
+      name: "department",
       headerName: "Department",
       type: "singleSelect",
       valueOptions: departments,
@@ -53,6 +62,7 @@ const Users = () => {
     },
     {
       field: "location_name",
+      name: "location",
       headerName: "Location",
       type: "singleSelect",
       valueOptions: locations,
@@ -61,16 +71,20 @@ const Users = () => {
     },
     {
       field: "is_superuser",
+      name: "is_superuser",
       headerName: "Superuser",
       type: "Checkbox",
+      editable: true,
       width: 110,
       renderCell: (params) => (params.value ? <CheckIcon /> : <ClearIcon />),
     },
     {
       field: "is_active",
+      name: "is_active",
       headerName: "Active",
       type: "Checkbox",
       width: 110,
+      editable: true,
       renderCell: (params) => (params.value ? <CheckIcon /> : <ClearIcon />),
     },
     {
@@ -78,14 +92,12 @@ const Users = () => {
       headerName: "Date Joined",
       type: "Date",
       width: 110,
-      editable: true,
     },
     {
       field: "last_login",
       headerName: "Last Login",
       type: "Date",
       width: 110,
-      editable: true,
     },
   ];
   const handleSubmitSuccess = (data) => {
@@ -122,6 +134,7 @@ const Users = () => {
           formData={getFormFields()}
           onSuccess={handleSubmitSuccess}
           onError={handleSubmitError}
+          passwordfields={true}
         />
       )}
     </div>
