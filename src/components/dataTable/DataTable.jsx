@@ -1,35 +1,15 @@
-import { DataGrid, GridColDef, GridToolbar } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import "./dataTable.scss";
 import { Link } from "react-router-dom";
 // import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-type Props = {
-  columns: GridColDef[];
-  rows: object[];
-  slug: string;
-};
-
-const DataTable = (props: Props) => {
-  // TEST THE API
-
-  // const queryClient = useQueryClient();
-  // // const mutation = useMutation({
-  // //   mutationFn: (id: number) => {
-  // //     return fetch(`http://localhost:8800/api/${props.slug}/${id}`, {
-  // //       method: "delete",
-  // //     });
-  // //   },
-  // //   onSuccess: ()=>{
-  // //     queryClient.invalidateQueries([`all${props.slug}`]);
-  // //   }
-  // // });
-
-  const handleDelete = (id: number) => {
+const DataTable = (props) => {
+  const handleDelete = (id) => {
     //delete the item
     // mutation.mutate(id)
   };
 
-  const actionColumn: GridColDef = {
+  const actionColumn = {
     field: "action",
     headerName: "Action",
     width: 200,
