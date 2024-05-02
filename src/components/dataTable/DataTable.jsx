@@ -36,7 +36,7 @@ const DataTable = (props) => {
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 10,
+              pageSize: 13,
             },
           },
         }}
@@ -47,7 +47,7 @@ const DataTable = (props) => {
             quickFilterProps: { debounceMs: 500 },
           },
         }}
-        pageSizeOptions={[5]}
+        pageSizeOptions={[13]}
         checkboxSelection
         disableRowSelectionOnClick
         disableColumnFilter
