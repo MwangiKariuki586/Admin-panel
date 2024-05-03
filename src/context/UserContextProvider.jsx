@@ -9,12 +9,13 @@ const UserContextProvider = ({ children }) => {
   const [locationdata, setLocationdata] = useState([]);
   const [tonerdata, setTonerdata] = useState([]);
   const [departmentdata, setDepartmentdata] = useState([]);
-
+  const [userdata, setUserdata] = useState([]);
   useEffect(() => {
     getPrinters();
     getLocations();
     getToners();
     getDepartments();
+    getUsers();
   }, []);
   const getDepartments = () => {
     axios
@@ -64,10 +65,29 @@ const UserContextProvider = ({ children }) => {
         // Handle error here, e.g., display an error message to the user
       });
   };
-
+  const getUsers = () => {
+    axios
+      .get("http://127.0.0.1:8000/api/users/")
+      .then((response) => {
+        // console.log(response.data.Users);
+        setUserdata(response.data); // Assuming response.data contains the array of users
+        console.log(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+        // Handle error here, e.g., display an error message to the user
+      });
+  };
   return (
     <UserContext.Provider
-      value={{ printerdata, departmentdata, locationdata, tonerdata }}
+      value={{
+        printerdata,
+        departmentdata,
+        locationdata,
+        tonerdata,
+        userdata,
+        setUserdata,
+      }}
     >
       {children}
     </UserContext.Provider>

@@ -1,7 +1,7 @@
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import "./dataTable.scss";
 import { Link } from "react-router-dom";
-// import { useMutation, useQueryClient } from "@tanstack/react-query";
+import Box from "@mui/material/Box"; // import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const DataTable = (props) => {
   const handleDelete = (id) => {
@@ -19,16 +19,16 @@ const DataTable = (props) => {
           <Link to={`/${props.slug}/${params.row.id}`}>
             <img src="/view.svg" alt="" />
           </Link>
-          <div className="delete" onClick={() => handleDelete(params.row.id)}>
+          <Link className="delete" to={"/confirm"}>
             <img src="/delete.svg" alt="" />
-          </div>
+          </Link>
         </div>
       );
     },
   };
 
   return (
-    <div className="dataTable">
+    <Box className="dataTable">
       <DataGrid
         className="dataGrid"
         rows={props.rows}
@@ -36,7 +36,7 @@ const DataTable = (props) => {
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 13,
+              pageSize: 12,
             },
           },
         }}
@@ -47,14 +47,14 @@ const DataTable = (props) => {
             quickFilterProps: { debounceMs: 500 },
           },
         }}
-        pageSizeOptions={[13]}
+        pageSizeOptions={[12]}
         checkboxSelection
         disableRowSelectionOnClick
-        disableColumnFilter
+        // disableColumnFilter
         disableDensitySelector
         disableColumnSelector
       />
-    </div>
+    </Box>
   );
 };
 

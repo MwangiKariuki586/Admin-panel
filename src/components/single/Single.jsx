@@ -9,19 +9,7 @@ import {
 } from "recharts";
 import "./single.scss";
 
-type Props = {
-  id: number;
-  img?: string;
-  title: string;
-  info: object;
-  chart?: {
-    dataKeys: { name: string; color: string }[];
-    data: object[];
-  };
-  activities?: { time: string; text: string }[];
-};
-
-const Single = (props: Props) => {
+const Single = (props) => {
   return (
     <div className="single">
       <div className="view">

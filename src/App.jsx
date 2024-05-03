@@ -15,6 +15,7 @@ import Departments from "./pages/departments/Departments";
 import Product from "./pages/product/Product";
 import NotFound from "./components/not found/NotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Areyousure from "./components/are you sure/Areyousure";
 
 const queryClient = new QueryClient();
 
@@ -71,6 +72,10 @@ function App() {
         {
           path: "/locations",
           element: <Locations />,
+        },
+        {
+          path: "/confirm",
+          element: <Areyousure />,
         },
         {
           path: "/users/:id",

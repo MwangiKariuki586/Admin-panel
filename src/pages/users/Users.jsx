@@ -9,7 +9,6 @@ import ClearIcon from "@mui/icons-material/Clear";
 import DataTable from "../../components/dataTable/DataTable";
 import UserContext from "../../context/UserContext";
 const Users = () => {
-  const [userdata, setUserdata] = useState([]);
   const [open, setOpen] = useState(false);
   const { departmentdata } = useContext(UserContext); //api data
   const departments = departmentdata.map(
@@ -17,23 +16,7 @@ const Users = () => {
   );
   const { locationdata } = useContext(UserContext); //api data
   const locations = locationdata.map((location) => location.Location_name);
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  const getUsers = () => {
-    axios
-      .get("http://127.0.0.1:8000/toner/users/")
-      .then((response) => {
-        // console.log(response.data.Users);
-        setUserdata(response.data.Users); // Assuming response.data contains the array of users
-        // console.log(departments);
-      })
-      .catch((err) => {
-        console.log(err);
-        // Handle error here, e.g., display an error message to the user
-      });
-  };
+  const { userdata } = useContext(UserContext); //api data
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
