@@ -10,6 +10,7 @@ const UserContextProvider = ({ children }) => {
   const [tonerdata, setTonerdata] = useState([]);
   const [departmentdata, setDepartmentdata] = useState([]);
   const [userdata, setUserdata] = useState([]);
+  const [selectedRow, setSelectedRow] = useState(null);
   useEffect(() => {
     getPrinters();
     getLocations();
@@ -87,6 +88,8 @@ const UserContextProvider = ({ children }) => {
         tonerdata,
         userdata,
         setUserdata,
+        selectedRow,
+        setSelectedRow,
       }}
     >
       {children}

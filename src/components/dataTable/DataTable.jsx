@@ -1,12 +1,15 @@
+import React, { useContext } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import "./dataTable.scss";
 import { Link } from "react-router-dom";
-import Box from "@mui/material/Box"; // import { useMutation, useQueryClient } from "@tanstack/react-query";
+import Box from "@mui/material/Box";
+import "./dataTable.scss";
+import UserContext from "../../context/UserContext";
 
-const DataTable = (props) => {
-  const handleDelete = (id) => {
-    //delete the item
-    // mutation.mutate(id)
+const DataTable = ({ slug, columns, rows, onRowSelection }) => {
+  const { selectedRow } = useContext(UserContext);
+  const handleRowClick = (row) => {
+    onRowSelection(row); // Invoke the onRowSelection function with the clicked user data
+    console.log("selectedRow:", selectedRow);
   };
 
   const actionColumn = {
@@ -16,9 +19,11 @@ const DataTable = (props) => {
     renderCell: (params) => {
       return (
         <div className="action">
-          <Link to={`/${props.slug}/${params.row.id}`}>
+          {/* Link to view details */}
+          <Link to={`/${slug}/${params.row.id}`}>
             <img src="/view.svg" alt="" />
           </Link>
+          {/* Link to delete item */}
           <Link className="delete" to={"/confirm"}>
             <img src="/delete.svg" alt="" />
           </Link>
@@ -31,8 +36,8 @@ const DataTable = (props) => {
     <Box className="dataTable">
       <DataGrid
         className="dataGrid"
-        rows={props.rows}
-        columns={[...props.columns, actionColumn]}
+        rows={rows}
+        columns={[...columns, actionColumn]}
         initialState={{
           pagination: {
             paginationModel: {
@@ -53,6 +58,7 @@ const DataTable = (props) => {
         // disableColumnFilter
         disableDensitySelector
         disableColumnSelector
+        onRowClick={handleRowClick} // Call handleRowClick on row click
       />
     </Box>
   );

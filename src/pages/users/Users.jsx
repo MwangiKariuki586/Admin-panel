@@ -8,6 +8,8 @@ import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 import DataTable from "../../components/dataTable/DataTable";
 import UserContext from "../../context/UserContext";
+import Single from "../../components/single/Single";
+import { selectClasses } from "@mui/material";
 const Users = () => {
   const [open, setOpen] = useState(false);
   const { departmentdata } = useContext(UserContext); //api data
@@ -17,6 +19,8 @@ const Users = () => {
   const { locationdata } = useContext(UserContext); //api data
   const locations = locationdata.map((location) => location.Location_name);
   const { userdata } = useContext(UserContext); //api data
+
+  const { setSelectedRow } = useContext(UserContext);
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
@@ -99,13 +103,27 @@ const Users = () => {
         [column.field]: userdata[column.field], // Map each field to its corresponding value from userdata
       }));
   };
+  const handleEdit = (id) => {
+    const rowToEdit = yourRowsData.find((row) => row.id === id);
+    setSelectedRow(rowToEdit);
+    // Navigate to the Add component with selectedRow data
+    // You may use React Router or any other navigation method here
+  };
+  const handleRowSelection = (user) => {
+    setSelectedRow(user); // Update selectedRow in context with the clicked user
+  };
   return (
     <div className="users">
       <div className="info">
         <h1>Users</h1>
         <button onClick={() => setOpen(true)}>Add New User</button>
       </div>
-      <DataTable slug="users" columns={columns} rows={userdata} />
+      <DataTable
+        slug="users"
+        columns={columns}
+        rows={userdata}
+        onRowSelection={handleRowSelection}
+      />
 
       {open && (
         <Add
@@ -118,6 +136,7 @@ const Users = () => {
           onSuccess={handleSubmitSuccess}
           onError={handleSubmitError}
           passwordfields={true}
+          isUpdate={selectedRow}
         />
       )}
     </div>

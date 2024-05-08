@@ -19,7 +19,8 @@ const Add = (props) => {
         department: departmentId,
       };
 
-      // Send the request with updated form state
+      // Send the request with updated form state based on whether its a put/post request
+
       const response = await axios.post(props.endpoint, updatedFormState);
 
       if (props.onSuccess) {

@@ -16,6 +16,7 @@ import Product from "./pages/product/Product";
 import NotFound from "./components/not found/NotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Areyousure from "./components/are you sure/Areyousure";
+import Add from "./components/add/Add";
 
 const queryClient = new QueryClient();
 
@@ -84,6 +85,10 @@ function App() {
         {
           path: "/products/:id",
           element: <Product />,
+        },
+        {
+          path: "add",
+          element: <Add />,
         },
       ],
     },
