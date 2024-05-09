@@ -103,12 +103,12 @@ const Users = () => {
         [column.field]: userdata[column.field], // Map each field to its corresponding value from userdata
       }));
   };
-  const handleEdit = (id) => {
-    const rowToEdit = yourRowsData.find((row) => row.id === id);
-    setSelectedRow(rowToEdit);
-    // Navigate to the Add component with selectedRow data
-    // You may use React Router or any other navigation method here
-  };
+  // const handleEdit = (id) => {
+  //   const rowToEdit = yourRowsData.find((row) => row.id === id);
+  //   setSelectedRow(rowToEdit);
+  //   // Navigate to the Add component with selectedRow data
+  //   // You may use React Router or any other navigation method here
+  // };
   const handleRowSelection = (user) => {
     setSelectedRow(user); // Update selectedRow in context with the clicked user
   };
@@ -136,7 +136,7 @@ const Users = () => {
           onSuccess={handleSubmitSuccess}
           onError={handleSubmitError}
           passwordfields={true}
-          isUpdate={selectedRow}
+          // isUpdate={selectedRow}
         />
       )}
     </div>

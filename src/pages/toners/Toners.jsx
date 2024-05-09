@@ -15,6 +15,7 @@ const Toners = () => {
   const { printerdata } = useContext(UserContext); //api data
   const printers = printerdata.map((printer) => printer.Printer_name);
   const toners = tonerdata.map((toner) => toner.Toner_name);
+  const { setSelectedRow } = useContext(UserContext);
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
@@ -47,13 +48,21 @@ const Toners = () => {
       width: 110,
     },
   ];
+  const handleRowSelection = (user) => {
+    setSelectedRow(user); // Update selectedRow in context with the clicked user
+  };
   return (
     <div className="users">
       <div className="info">
         <h1>Toners</h1>
         <button onClick={() => setOpen(true)}>Add New Toner</button>
       </div>
-      <DataTable slug="users" columns={columns} rows={tonerdata} />
+      <DataTable
+        slug="toner"
+        columns={columns}
+        rows={tonerdata}
+        onRowSelection={handleRowSelection}
+      />
 
       {open && <Add slug="Toner" columns={columns} setOpen={setOpen} />}
     </div>

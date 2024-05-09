@@ -15,6 +15,7 @@ const Departments = () => {
   const departments = departmentdata.map(
     (department) => department.Department_name
   );
+  const { setSelectedRow } = useContext(UserContext);
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
@@ -32,14 +33,21 @@ const Departments = () => {
       width: 110,
     },
   ];
-
+  const handleRowSelection = (user) => {
+    setSelectedRow(user); // Update selectedRow in context with the clicked user
+  };
   return (
     <div className="users">
       <div className="info">
         <h1>Departments</h1>
         <button onClick={() => setOpen(true)}>Add New Department</button>
       </div>
-      <DataTable slug="users" columns={columns} rows={departmentdata} />
+      <DataTable
+        slug="users"
+        columns={columns}
+        rows={departmentdata}
+        onRowSelection={handleRowSelection}
+      />
 
       {open && <Add slug="Department" columns={columns} setOpen={setOpen} />}
     </div>

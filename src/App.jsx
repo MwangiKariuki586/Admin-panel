@@ -12,7 +12,7 @@ import Toners from "./pages/toners/Toners";
 import Printers from "./pages/printers/Printers";
 import Locations from "./pages/locations/Locations";
 import Departments from "./pages/departments/Departments";
-import Product from "./pages/product/Product";
+
 import NotFound from "./components/not found/NotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Areyousure from "./components/are you sure/Areyousure";
@@ -83,8 +83,8 @@ function App() {
           element: <User />,
         },
         {
-          path: "/products/:id",
-          element: <Product />,
+          path: "/toner/:id",
+          element: <User />,
         },
         {
           path: "add",

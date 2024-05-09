@@ -14,6 +14,7 @@ const Printers = () => {
 
   const { printerdata } = useContext(UserContext); //api data
   const printers = printerdata.map((printer) => printer.Printer_name);
+  const { setSelectedRow } = useContext(UserContext);
   const columns = [
     { field: "id", headerName: "ID", width: 90 },
     {
@@ -30,13 +31,21 @@ const Printers = () => {
       width: 110,
     },
   ];
+  const handleRowSelection = (user) => {
+    setSelectedRow(user); // Update selectedRow in context with the clicked user
+  };
   return (
     <div className="users">
       <div className="info">
         <h1>Printers</h1>
         <button onClick={() => setOpen(true)}>Add New Printer</button>
       </div>
-      <DataTable slug="users" columns={columns} rows={printerdata} />
+      <DataTable
+        slug="users"
+        columns={columns}
+        rows={printerdata}
+        onRowSelection={handleRowSelection}
+      />
 
       {open && <Add slug="Printer" columns={columns} setOpen={setOpen} />}
     </div>

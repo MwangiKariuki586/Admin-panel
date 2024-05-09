@@ -10,9 +10,9 @@ import {
 } from "recharts";
 import "./single.scss";
 import UserContext from "../../context/UserContext";
-
+import { singleUser } from "../../data";
 const Single = (props) => {
-  const { selectedRow } = useContext(UserContext);
+  const { selectedRow, locationdata, departmentdata } = useContext(UserContext);
   const items = selectedRow?.row || {}; // Perform null check on selectedRow and set items to an empty object if it's null or undefined
 
   return (
@@ -28,7 +28,16 @@ const Single = (props) => {
           {selectedRow && selectedRow.row && (
             <div className="details">
               {Object.keys(selectedRow.row).map((key) => {
-                if (key !== "id") {
+                if (key !== "id" && items[key] !== null) {
+                  const isDepartment =
+                    key === "department_name" ||
+                    key === "user_department" ||
+                    key === "Department_name";
+                  const isLocation =
+                    key === "location_name" ||
+                    key === "user_location" ||
+                    key === "Location_name";
+
                   return (
                     <div className="item" key={key}>
                       <span className="itemTitle">{key}:</span>
@@ -37,6 +46,36 @@ const Single = (props) => {
                       ) : typeof items[key] === "string" &&
                         items[key].includes("03:00") ? (
                         <span>{new Date(items[key]).toLocaleString()}</span>
+                      ) : isDepartment ? (
+                        <select
+                          className="itemValue"
+                          value={items[key]}
+                          readOnly
+                        >
+                          {departmentdata?.map((option) => (
+                            <option
+                              key={option.id}
+                              value={option.Department_name}
+                            >
+                              {option.Department_name}
+                            </option>
+                          ))}
+                        </select>
+                      ) : isLocation ? (
+                        <select
+                          className="itemValue"
+                          value={items[key]}
+                          readOnly
+                        >
+                          {locationdata?.map((option) => (
+                            <option
+                              key={option.id}
+                              value={option.Location_name}
+                            >
+                              {option.Location_name}
+                            </option>
+                          ))}
+                        </select>
                       ) : (
                         <input
                           type="text"

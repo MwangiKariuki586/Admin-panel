@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { DataGrid } from "@mui/x-data-grid";
 import Box from "@mui/material/Box";
@@ -7,6 +7,7 @@ import "./toner_requests.scss";
 import CheckIcon from "@mui/icons-material/Check";
 import ClearIcon from "@mui/icons-material/Clear";
 import DataTable from "../../components/dataTable/DataTable";
+import UserContext from "../../context/UserContext";
 const columns = [
   { field: "id", headerName: "ID", width: 85 },
   {
@@ -50,7 +51,7 @@ const columns = [
 const Toner_requests = () => {
   const [userdata, setUserdata] = useState([]);
   const [open, setOpen] = useState(false);
-
+  const { setSelectedRow } = useContext(UserContext);
   useEffect(() => {
     getTonerrequests();
   }, []);
@@ -67,14 +68,21 @@ const Toner_requests = () => {
         // Handle error here, e.g., display an error message to the user
       });
   };
-
+  const handleRowSelection = (user) => {
+    setSelectedRow(user); // Update selectedRow in context with the clicked user
+  };
   return (
     <div className="users">
       <div className="info">
         <h1>Toner requests</h1>
         {/* <button onClick={() => setOpen(true)}>Add New Request</button> */}
       </div>
-      <DataTable slug="users" columns={columns} rows={userdata} />
+      <DataTable
+        slug="users"
+        columns={columns}
+        rows={userdata}
+        onRowSelection={handleRowSelection}
+      />
 
       {open && <Add slug="Request" columns={columns} setOpen={setOpen} />}
     </div>
