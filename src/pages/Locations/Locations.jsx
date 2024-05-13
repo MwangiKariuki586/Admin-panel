@@ -33,6 +33,7 @@ const Locations = () => {
   ];
   const handleRowSelection = (user) => {
     setSelectedRow(user); // Update selectedRow in context with the clicked user
+    sessionStorage.setItem("selectedUserData", JSON.stringify(user));
   };
   return (
     <div className="users">
@@ -41,7 +42,7 @@ const Locations = () => {
         <button onClick={() => setOpen(true)}>Add New Location</button>
       </div>
       <DataTable
-        slug="users"
+        slug="location"
         columns={columns}
         rows={locationdata}
         onRowSelection={handleRowSelection}

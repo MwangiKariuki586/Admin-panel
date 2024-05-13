@@ -7,7 +7,7 @@ import Footer from "./components/footer/Footer";
 import Menu from "./components/menu/Menu";
 import Login from "./pages/login/Login";
 import "./styles/global.scss";
-import User from "./pages/user/User";
+import User from "./pages/user/SingleObject";
 import Toners from "./pages/toners/Toners";
 import Printers from "./pages/printers/Printers";
 import Locations from "./pages/locations/Locations";
@@ -17,6 +17,7 @@ import NotFound from "./components/not found/NotFound";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Areyousure from "./components/are you sure/Areyousure";
 import Add from "./components/add/Add";
+import Single from "./components/single/Single";
 
 const queryClient = new QueryClient();
 
@@ -80,11 +81,27 @@ function App() {
         },
         {
           path: "/users/:id",
-          element: <User />,
+          element: <Single />,
         },
         {
           path: "/toner/:id",
-          element: <User />,
+          element: <Single />,
+        },
+        {
+          path: "/department/:id",
+          element: <Single />,
+        },
+        {
+          path: "/toner_request/:id",
+          element: <Single />,
+        },
+        {
+          path: "/printer/:id",
+          element: <Single />,
+        },
+        {
+          path: "/location/:id",
+          element: <Single />,
         },
         {
           path: "add",

@@ -12,22 +12,22 @@ import "./single.scss";
 import UserContext from "../../context/UserContext";
 import { singleUser } from "../../data";
 const Single = (props) => {
-  const { selectedRow, locationdata, departmentdata } = useContext(UserContext);
-  const items = selectedRow?.row || {}; // Perform null check on selectedRow and set items to an empty object if it's null or undefined
+  const { selectedRow, locationdata, departmentdata, selectedUserData } =
+    useContext(UserContext);
+  const items = selectedUserData?.row || {}; // Perform null check on selectedUserData and set items to an empty object if it's null or undefined
 
   return (
     <div className="single">
       <div className="view">
         <div className="info">
           <div className="topInfo">
-            {props.img && <img src={props.img} alt="" />}
             <h1>{items.staff_name}</h1>{" "}
-            {/* Ensure selectedRow.row exists before accessing properties */}
+            {/* Ensure selectedUserData.row exists before accessing properties */}
             <button>Update</button>
           </div>
-          {selectedRow && selectedRow.row && (
+          {selectedUserData && selectedUserData.row && (
             <div className="details">
-              {Object.keys(selectedRow.row).map((key) => {
+              {Object.keys(selectedUserData.row).map((key) => {
                 if (key !== "id" && items[key] !== null) {
                   const isDepartment =
                     key === "department_name" ||
@@ -95,13 +95,13 @@ const Single = (props) => {
         <hr />
         {/* Render chart and activities if provided */}
         {/* Chart rendering logic */}
-        {props.chart && (
+        {singleUser.chart && (
           <div className="chart">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
                 width={500}
                 height={300}
-                data={props.chart.data}
+                data={singleUser.chart.data}
                 margin={{
                   top: 5,
                   right: 30,
@@ -113,7 +113,7 @@ const Single = (props) => {
                 <YAxis />
                 <Tooltip />
                 <Legend />
-                {props.chart.dataKeys.map((dataKey) => (
+                {singleUser.chart.dataKeys.map((dataKey) => (
                   <Line
                     key={dataKey.name}
                     type="monotone"
@@ -129,9 +129,9 @@ const Single = (props) => {
       <div className="activities">
         <h2>Latest Activities</h2>
         {/* Activities rendering logic */}
-        {props.activities && (
+        {singleUser.activities && (
           <ul>
-            {props.activities.map((activity, index) => (
+            {singleUser.activities.map((activity, index) => (
               <li key={index}>
                 <div>
                   <p>{activity.text}</p>

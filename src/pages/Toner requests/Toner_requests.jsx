@@ -70,6 +70,7 @@ const Toner_requests = () => {
   };
   const handleRowSelection = (user) => {
     setSelectedRow(user); // Update selectedRow in context with the clicked user
+    sessionStorage.setItem("selectedUserData", JSON.stringify(user));
   };
   return (
     <div className="users">
@@ -78,7 +79,7 @@ const Toner_requests = () => {
         {/* <button onClick={() => setOpen(true)}>Add New Request</button> */}
       </div>
       <DataTable
-        slug="users"
+        slug="toner_request"
         columns={columns}
         rows={userdata}
         onRowSelection={handleRowSelection}

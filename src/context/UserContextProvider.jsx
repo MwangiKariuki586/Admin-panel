@@ -11,12 +11,18 @@ const UserContextProvider = ({ children }) => {
   const [departmentdata, setDepartmentdata] = useState([]);
   const [userdata, setUserdata] = useState([]);
   const [selectedRow, setSelectedRow] = useState(null);
+  const rowdata = sessionStorage.getItem("selectedUserData");
+  const selectedUserData = sessionStorage.getItem("selectedUserData")
+    ? JSON.parse(rowdata)
+    : null;
+
   useEffect(() => {
     getPrinters();
     getLocations();
     getToners();
     getDepartments();
     getUsers();
+    console.log(selectedUserData?.row);
   }, []);
   const getDepartments = () => {
     axios
@@ -90,6 +96,7 @@ const UserContextProvider = ({ children }) => {
         setUserdata,
         selectedRow,
         setSelectedRow,
+        selectedUserData,
       }}
     >
       {children}

@@ -1,15 +1,14 @@
 import Single from "../../components/single/Single";
-import { singleUser } from "../../data";
-import "./user.scss";
+import "./singleobject.scss";
 
-const User = () => {
+const SingleObject = () => {
   //Fetch data and send to Single Component
 
   return (
     <div className="user">
-      <Single {...singleUser} />
+      <Single />
     </div>
   );
 };
 
-export default User;
+export default SingleObject;

@@ -33,6 +33,7 @@ const Printers = () => {
   ];
   const handleRowSelection = (user) => {
     setSelectedRow(user); // Update selectedRow in context with the clicked user
+    sessionStorage.setItem("selectedUserData", JSON.stringify(user));
   };
   return (
     <div className="users">
@@ -41,7 +42,7 @@ const Printers = () => {
         <button onClick={() => setOpen(true)}>Add New Printer</button>
       </div>
       <DataTable
-        slug="users"
+        slug="printer"
         columns={columns}
         rows={printerdata}
         onRowSelection={handleRowSelection}

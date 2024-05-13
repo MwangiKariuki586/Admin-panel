@@ -35,6 +35,7 @@ const Departments = () => {
   ];
   const handleRowSelection = (user) => {
     setSelectedRow(user); // Update selectedRow in context with the clicked user
+    sessionStorage.setItem("selectedUserData", JSON.stringify(user));
   };
   return (
     <div className="users">
@@ -43,7 +44,7 @@ const Departments = () => {
         <button onClick={() => setOpen(true)}>Add New Department</button>
       </div>
       <DataTable
-        slug="users"
+        slug="department"
         columns={columns}
         rows={departmentdata}
         onRowSelection={handleRowSelection}

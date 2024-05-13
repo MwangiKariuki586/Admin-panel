@@ -50,6 +50,7 @@ const Toners = () => {
   ];
   const handleRowSelection = (user) => {
     setSelectedRow(user); // Update selectedRow in context with the clicked user
+    sessionStorage.setItem("selectedUserData", JSON.stringify(user));
   };
   return (
     <div className="users">
